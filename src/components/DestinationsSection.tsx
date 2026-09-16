@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { Compass, Sparkles } from 'lucide-react';
-import { DESTINATIONS } from '../data/travelData';
+import { DESTINATIONS, DESTINATIONS_SECTION_DATA } from '../data/travelData';
 import { DestinationCard } from './DestinationCard';
 import { Destination } from '../types';
 
@@ -11,13 +11,7 @@ interface DestinationsSectionProps {
 
 export const DestinationsSection: React.FC<DestinationsSectionProps> = ({ onOpenDetails }) => {
   const [activeFilter, setActiveFilter] = useState<string>('all');
-
-  const filterOptions = [
-    { id: 'all', label: 'All Destinations' },
-    { id: 'coastal', label: 'Coastal & Islands' },
-    { id: 'alpine', label: 'Alpine Summits' },
-    { id: 'cultural', label: 'Cultural Cities' },
-  ];
+  const filterOptions = DESTINATIONS_SECTION_DATA.filterOptions;
 
   const filteredDestinations = DESTINATIONS.filter((dest) => {
     if (activeFilter === 'all') return true;
@@ -39,16 +33,16 @@ export const DestinationsSection: React.FC<DestinationsSectionProps> = ({ onOpen
           <div className="max-w-2xl space-y-4">
             <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#D9C7A2]">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>Curated Portfolios</span>
+              <span>{DESTINATIONS_SECTION_DATA.badge}</span>
             </div>
 
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-normal text-white tracking-tight leading-tight">
-              Where Will You <br className="hidden sm:inline" />
-              <span className="italic font-normal">Go Next?</span>
+              {DESTINATIONS_SECTION_DATA.titleMain} <br className="hidden sm:inline" />
+              <span className="italic font-normal">{DESTINATIONS_SECTION_DATA.titleSub}</span>
             </h2>
 
             <p className="text-base sm:text-lg text-[#B8BFBB] font-light max-w-xl">
-              From hidden islands to iconic cities, discover places worth remembering. Handpicked escapes tailored for discerning wanderers.
+              {DESTINATIONS_SECTION_DATA.description}
             </p>
           </div>
 
@@ -97,8 +91,8 @@ export const DestinationsSection: React.FC<DestinationsSectionProps> = ({ onOpen
               <Compass className="w-5 h-5 text-[#D9C7A2]" />
             </div>
             <div>
-              <p className="text-sm font-medium text-white">Seeking an unlisted private retreat?</p>
-              <p className="text-xs text-[#B8BFBB]">Our bespoke concierges coordinate private villas and off-grid charters worldwide.</p>
+              <p className="text-sm font-medium text-white">{DESTINATIONS_SECTION_DATA.unlistedBanner.title}</p>
+              <p className="text-xs text-[#B8BFBB]">{DESTINATIONS_SECTION_DATA.unlistedBanner.description}</p>
             </div>
           </div>
 
@@ -106,7 +100,7 @@ export const DestinationsSection: React.FC<DestinationsSectionProps> = ({ onOpen
             href="#footer"
             className="text-xs uppercase font-mono tracking-wider text-[#D9C7A2] hover:text-white transition-colors underline underline-offset-4 shrink-0"
           >
-            Consult a Travel Specialist →
+            {DESTINATIONS_SECTION_DATA.unlistedBanner.buttonText} →
           </a>
         </motion.div>
       </div>

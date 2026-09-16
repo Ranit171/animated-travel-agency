@@ -1,6 +1,6 @@
 import React from 'react';
 import { Sparkles, ArrowRight } from 'lucide-react';
-import { TRAVEL_STORIES } from '../data/travelData';
+import { TRAVEL_STORIES, STORIES_SECTION_DATA } from '../data/travelData';
 import { StoryCard } from './StoryCard';
 import { TravelStory } from '../types';
 
@@ -18,21 +18,21 @@ export const StoriesSection: React.FC<StoriesSectionProps> = ({ onReadStory }) =
           <div className="max-w-2xl space-y-4">
             <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#D9C7A2]">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>The Wanderly Journal</span>
+              <span>{STORIES_SECTION_DATA.badge}</span>
             </div>
 
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-normal text-white tracking-tight leading-tight">
-              Stories From <br className="hidden sm:inline" />
-              <span className="italic font-normal">The Road</span>
+              {STORIES_SECTION_DATA.titleMain} <br className="hidden sm:inline" />
+              <span className="italic font-normal">{STORIES_SECTION_DATA.titleSub}</span>
             </h2>
 
             <p className="text-base sm:text-lg text-[#B8BFBB] font-light max-w-xl">
-              Perspectives, cultural guides, and quiet essays gathered from trails, isles, and ancient towns across the globe.
+              {STORIES_SECTION_DATA.description}
             </p>
           </div>
 
           <div className="flex items-center gap-2 text-xs uppercase font-mono tracking-widest text-[#B8BFBB]">
-            <span>Curated Dispatches</span>
+            <span>{STORIES_SECTION_DATA.sideLabel}</span>
           </div>
         </div>
 

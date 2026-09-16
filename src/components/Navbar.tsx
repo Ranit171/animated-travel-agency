@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Compass, Menu, X, ArrowUpRight, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
+import { NAV_DATA, SITE_CONFIG } from '../data/travelData';
+
 interface NavbarProps {
   onOpenPlanModal: () => void;
   activeSection?: string;
@@ -24,14 +26,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenPlanModal, activeSection =
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navLinks = [
-    { label: 'Home', href: '#home', id: 'home' },
-    { label: 'Destinations', href: '#destinations', id: 'destinations' },
-    { label: 'Experiences', href: '#experiences', id: 'experiences' },
-    { label: 'Travel Packages', href: '#packages', id: 'packages' },
-    { label: 'About Us', href: '#why-us', id: 'why-us' },
-    { label: 'Contact', href: '#footer', id: 'footer' },
-  ];
+  const navLinks = NAV_DATA.navLinks;
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
@@ -63,7 +58,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenPlanModal, activeSection =
               <Compass className="w-4 h-4 text-white group-hover:text-[#D9C7A2] transition-colors duration-300 group-hover:rotate-45" />
             </div>
             <span className="text-xl md:text-2xl font-semibold tracking-tight text-white font-sans">
-              Wanderly<span className="text-[#D9C7A2]">.</span>
+              {SITE_CONFIG.brandName}<span className="text-[#D9C7A2]">{SITE_CONFIG.brandSuffix}</span>
             </span>
           </a>
 
@@ -103,7 +98,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenPlanModal, activeSection =
               className="relative group px-5 py-2 rounded-full text-xs md:text-sm font-medium text-[#0B0F0E] bg-[#D9C7A2] hover:bg-[#EFE6D2] transition-all duration-300 shadow-lg shadow-[#D9C7A2]/20 hover:shadow-[#D9C7A2]/40 flex items-center gap-1.5 active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#D9C7A2] focus-visible:ring-offset-[#0B0F0E]"
             >
               <Sparkles className="w-3.5 h-3.5 text-[#0B0F0E]" />
-              <span>Plan Your Trip</span>
+              <span>{NAV_DATA.ctaButtonText}</span>
               <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </button>
           </div>
@@ -156,7 +151,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenPlanModal, activeSection =
                 className="w-full py-3 px-6 rounded-full text-sm font-semibold text-[#0B0F0E] bg-[#D9C7A2] hover:bg-[#EFE6D2] transition-colors flex items-center justify-center gap-2 shadow-lg shadow-[#D9C7A2]/20"
               >
                 <Sparkles className="w-4 h-4 text-[#0B0F0E]" />
-                <span>Plan Your Trip</span>
+                <span>{NAV_DATA.ctaButtonText}</span>
               </button>
             </div>
           </motion.div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Sparkles } from 'lucide-react';
-import { BRAND_BENEFITS } from '../data/travelData';
+import { BRAND_BENEFITS, WHY_US_SECTION_DATA } from '../data/travelData';
 import { BenefitCard } from './BenefitCard';
 
 export const WhyWanderlySection: React.FC = () => {
@@ -12,16 +12,16 @@ export const WhyWanderlySection: React.FC = () => {
         <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
           <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#D9C7A2]">
             <Sparkles className="w-3.5 h-3.5" />
-            <span>The Wanderly Standard</span>
+            <span>{WHY_US_SECTION_DATA.badge}</span>
           </div>
 
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-normal text-white tracking-tight leading-tight">
-            Travel With <br className="hidden sm:inline" />
-            <span className="italic">Confidence</span>
+            {WHY_US_SECTION_DATA.titleMain} <br className="hidden sm:inline" />
+            <span className="italic">{WHY_US_SECTION_DATA.titleSub}</span>
           </h2>
 
           <p className="text-base sm:text-lg text-[#B8BFBB] font-light">
-            We reject mass tourism in favor of deep immersion, authentic connections, and effortless bespoke precision.
+            {WHY_US_SECTION_DATA.description}
           </p>
         </div>
 

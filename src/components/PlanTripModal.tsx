@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { X, Sparkles, CheckCircle, Calendar, Users, Compass, ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-import { DESTINATIONS } from '../data/travelData';
+import { DESTINATIONS, PLAN_MODAL_DATA } from '../data/travelData';
 
 interface PlanTripModalProps {
   isOpen: boolean;
@@ -14,10 +14,10 @@ export const PlanTripModal: React.FC<PlanTripModalProps> = ({
   onClose,
   initialDestination = '',
 }) => {
-  const [destination, setDestination] = useState(initialDestination || 'Santorini, Greece');
-  const [style, setStyle] = useState('Coastal Sanctuary');
-  const [month, setMonth] = useState('June 2026');
-  const [travelers, setTravelers] = useState('2 Travelers');
+  const [destination, setDestination] = useState(initialDestination || `${DESTINATIONS[0].name}, ${DESTINATIONS[0].country}`);
+  const [style, setStyle] = useState(PLAN_MODAL_DATA.travelStyleOptions[0]);
+  const [month, setMonth] = useState(PLAN_MODAL_DATA.monthOptions[1]);
+  const [travelers, setTravelers] = useState(PLAN_MODAL_DATA.travelerOptions[1]);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [notes, setNotes] = useState('');
@@ -84,17 +84,17 @@ export const PlanTripModal: React.FC<PlanTripModalProps> = ({
 
               <div className="space-y-2">
                 <h3 className="text-3xl font-serif font-normal text-white">
-                  Voyage Requested
+                  {PLAN_MODAL_DATA.successTitle}
                 </h3>
                 <p className="text-sm text-[#B8BFBB] max-w-md mx-auto leading-relaxed">
-                  Thank you, <strong className="text-white">{name}</strong>. A dedicated Wanderly private travel designer has received your itinerary request for <strong className="text-white">{destination}</strong> and will contact you at <strong className="text-white">{email}</strong> within 12 hours.
+                  Thank you, <strong className="text-white">{name}</strong>. {PLAN_MODAL_DATA.successMessage} We will contact you at <strong className="text-white">{email}</strong> regarding your bespoke voyage to <strong className="text-white">{destination}</strong>.
                 </p>
               </div>
 
               <div className="p-4 rounded-xl glass-panel text-left max-w-md mx-auto text-xs space-y-1 text-[#B8BFBB]">
                 <p><span className="text-white font-medium">Destination:</span> {destination}</p>
                 <p><span className="text-white font-medium">Timing:</span> {month} ({travelers})</p>
-                <p><span className="text-white font-medium">Travel Style:</span> {style}</p>
+                <p><span className="text-white font-medium">Travel Atmosphere:</span> {style}</p>
               </div>
 
               <button
@@ -109,13 +109,13 @@ export const PlanTripModal: React.FC<PlanTripModalProps> = ({
               <div className="space-y-1.5 pr-8">
                 <div className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-widest text-[#D9C7A2]">
                   <Sparkles className="w-3.5 h-3.5" />
-                  <span>Bespoke Concierge</span>
+                  <span>{PLAN_MODAL_DATA.badge}</span>
                 </div>
                 <h3 className="text-2xl sm:text-3xl font-serif text-white font-normal">
-                  Design Your Journey
+                  {PLAN_MODAL_DATA.title}
                 </h3>
                 <p className="text-xs sm:text-sm text-[#B8BFBB] font-light">
-                  Specify your dream coordinates. We orchestrate private villas, bespoke charters, and insider privileges.
+                  {PLAN_MODAL_DATA.subtitle}
                 </p>
               </div>
 
@@ -152,10 +152,11 @@ export const PlanTripModal: React.FC<PlanTripModalProps> = ({
                       onChange={(e) => setStyle(e.target.value)}
                       className="w-full px-4 py-2.5 rounded-xl bg-white/5 border border-white/15 text-xs sm:text-sm text-white focus:outline-none focus:border-[#D9C7A2]"
                     >
-                      <option value="Coastal Sanctuary" className="bg-[#111716]">Coastal Sanctuary & Private Yachts</option>
-                      <option value="Alpine Wilderness" className="bg-[#111716]">Alpine Wilderness & High Mountain Chalets</option>
-                      <option value="Cultural Heritage" className="bg-[#111716]">Cultural Heritage & Artisanal Immersions</option>
-                      <option value="Island Slow Travel" className="bg-[#111716]">Island Slow Travel & Secluded Atolls</option>
+                      {PLAN_MODAL_DATA.travelStyleOptions.map((opt) => (
+                        <option key={opt} value={opt} className="bg-[#111716]">
+                          {opt}
+                        </option>
+                      ))}
                     </select>
                   </div>
                 </div>
@@ -172,10 +173,11 @@ export const PlanTripModal: React.FC<PlanTripModalProps> = ({
                       onChange={(e) => setMonth(e.target.value)}
                       className="w-full px-4 py-2.5 rounded-xl bg-white/5 border border-white/15 text-xs sm:text-sm text-white focus:outline-none focus:border-[#D9C7A2]"
                     >
-                      <option value="Spring (April - May 2026)" className="bg-[#111716]">Spring (April - May 2026)</option>
-                      <option value="Summer (June - August 2026)" className="bg-[#111716]">Summer (June - August 2026)</option>
-                      <option value="Autumn (Sept - Nov 2026)" className="bg-[#111716]">Autumn (Sept - Nov 2026)</option>
-                      <option value="Winter (Dec 2026 - Feb 2027)" className="bg-[#111716]">Winter (Dec 2026 - Feb 2027)</option>
+                      {PLAN_MODAL_DATA.monthOptions.map((m) => (
+                        <option key={m} value={m} className="bg-[#111716]">
+                          {m}
+                        </option>
+                      ))}
                     </select>
                   </div>
 
@@ -189,10 +191,11 @@ export const PlanTripModal: React.FC<PlanTripModalProps> = ({
                       onChange={(e) => setTravelers(e.target.value)}
                       className="w-full px-4 py-2.5 rounded-xl bg-white/5 border border-white/15 text-xs sm:text-sm text-white focus:outline-none focus:border-[#D9C7A2]"
                     >
-                      <option value="Solo Journey" className="bg-[#111716]">Solo Journey</option>
-                      <option value="Couple (2 Travelers)" className="bg-[#111716]">Couple (2 Travelers)</option>
-                      <option value="Small Group (3 - 5)" className="bg-[#111716]">Small Group (3 - 5)</option>
-                      <option value="Private Family / Delegation (6+)" className="bg-[#111716]">Private Family / Delegation (6+)</option>
+                      {PLAN_MODAL_DATA.travelerOptions.map((t) => (
+                        <option key={t} value={t} className="bg-[#111716]">
+                          {t}
+                        </option>
+                      ))}
                     </select>
                   </div>
                 </div>
@@ -247,7 +250,7 @@ export const PlanTripModal: React.FC<PlanTripModalProps> = ({
                     type="submit"
                     className="w-full py-3.5 rounded-full bg-[#D9C7A2] hover:bg-[#EFE6D2] text-[#0B0F0E] text-xs sm:text-sm font-semibold tracking-wide transition-all shadow-lg shadow-[#D9C7A2]/20 flex items-center justify-center gap-2 cursor-pointer"
                   >
-                    <span>Submit Travel Inquiry</span>
+                    <span>{PLAN_MODAL_DATA.submitButtonText}</span>
                     <ArrowRight className="w-4 h-4" />
                   </button>
                 </div>

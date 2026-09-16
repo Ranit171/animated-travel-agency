@@ -1,6 +1,6 @@
 import React from 'react';
 import { Sparkles, ArrowRight } from 'lucide-react';
-import { TRAVEL_PACKAGES } from '../data/travelData';
+import { TRAVEL_PACKAGES, PACKAGES_SECTION_DATA } from '../data/travelData';
 import { PackageCard } from './PackageCard';
 import { TravelPackage } from '../types';
 
@@ -22,16 +22,16 @@ export const TravelPackagesSection: React.FC<TravelPackagesSectionProps> = ({
           <div className="max-w-2xl space-y-4">
             <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#D9C7A2]">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>Tailored Expeditions</span>
+              <span>{PACKAGES_SECTION_DATA.badge}</span>
             </div>
 
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-normal text-white tracking-tight leading-tight">
-              Find Your <br className="hidden sm:inline" />
-              <span className="italic font-normal">Perfect Escape</span>
+              {PACKAGES_SECTION_DATA.titleMain} <br className="hidden sm:inline" />
+              <span className="italic font-normal">{PACKAGES_SECTION_DATA.titleSub}</span>
             </h2>
 
             <p className="text-base sm:text-lg text-[#B8BFBB] font-light max-w-xl">
-              Complete boutique itineraries with private transfers, 5-star handpicked sanctuaries, and insider cultural privileges included.
+              {PACKAGES_SECTION_DATA.description}
             </p>
           </div>
 
@@ -39,7 +39,7 @@ export const TravelPackagesSection: React.FC<TravelPackagesSectionProps> = ({
             onClick={onOpenPlanModal}
             className="self-start md:self-auto px-5 py-2.5 rounded-full glass-button text-xs sm:text-sm font-medium text-white flex items-center gap-2 hover:border-[#D9C7A2] cursor-pointer"
           >
-            <span>Request Custom Itinerary</span>
+            <span>{PACKAGES_SECTION_DATA.customItineraryButtonText}</span>
             <ArrowRight className="w-4 h-4 text-[#D9C7A2]" />
           </button>
         </div>

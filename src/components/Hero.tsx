@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'motion/react';
 import { ArrowRight, ChevronDown, Clock, Calendar, Sparkles } from 'lucide-react';
-import { FLOATING_DESTINATIONS } from '../data/travelData';
+import { FLOATING_DESTINATIONS, HERO_SECTION_DATA } from '../data/travelData';
 import { DestinationBubble } from './DestinationBubble';
 import { FloatingDestination } from '../types';
 
@@ -267,7 +267,7 @@ export const Hero: React.FC<HeroProps> = ({
                 onClick={onExploreClick}
                 className="group px-6 py-3.5 rounded-full glass-button text-white text-sm font-medium flex items-center gap-3 border border-white/30 hover:border-[#D9C7A2] hover:bg-white/20 active:scale-95 cursor-pointer shadow-xl shadow-black/30"
               >
-                <span>Explore Destinations</span>
+                <span>{HERO_SECTION_DATA.exploreButtonText}</span>
                 <ArrowRight className="w-4 h-4 text-[#D9C7A2] transition-transform duration-300 group-hover:translate-x-1" />
               </button>
 
@@ -276,7 +276,7 @@ export const Hero: React.FC<HeroProps> = ({
                   onClick={() => onViewItinerary(activeDest)}
                   className="px-6 py-3.5 rounded-full bg-[#D9C7A2] hover:bg-[#EFE6D2] text-[#0B0F0E] text-sm font-semibold flex items-center gap-2 cursor-pointer transition-colors shadow-lg shadow-[#D9C7A2]/20 active:scale-95"
                 >
-                  <span>View {activeDest.title} Itinerary</span>
+                  <span>{HERO_SECTION_DATA.itineraryButtonPrefix} {activeDest.title} {HERO_SECTION_DATA.itineraryButtonSuffix}</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
               )}
@@ -321,9 +321,9 @@ export const Hero: React.FC<HeroProps> = ({
         <div className="lg:hidden mt-8 pt-6 border-t border-white/10">
           <div className="flex items-center justify-between mb-3 px-1">
             <span className="text-xs uppercase tracking-widest text-[#D9C7A2] font-mono">
-              Tap Bubbles to Preview
+              {HERO_SECTION_DATA.mobilePreviewLabel}
             </span>
-            <span className="text-[11px] text-[#B8BFBB]">Swipe to explore →</span>
+            <span className="text-[11px] text-[#B8BFBB]">{HERO_SECTION_DATA.mobileSwipePrompt}</span>
           </div>
 
           <div className="flex gap-4 overflow-x-auto pb-4 no-scrollbar snap-x snap-mandatory">
@@ -365,7 +365,7 @@ export const Hero: React.FC<HeroProps> = ({
         <div className="hidden sm:flex items-center gap-3">
           <span className="w-8 h-[1px] bg-white/20" />
           <span className="tracking-widest uppercase text-[11px] font-mono">
-            Cinematic Expeditions 2026
+            {HERO_SECTION_DATA.footerExpeditionText}
           </span>
         </div>
 
@@ -373,7 +373,7 @@ export const Hero: React.FC<HeroProps> = ({
           href="#destinations"
           className="inline-flex items-center gap-2 group text-[#B8BFBB] hover:text-white transition-colors"
         >
-          <span className="tracking-wider text-xs">Scroll to explore</span>
+          <span className="tracking-wider text-xs">{HERO_SECTION_DATA.scrollPromptText}</span>
           <motion.div
             animate={{ y: [0, 4, 0] }}
             transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}

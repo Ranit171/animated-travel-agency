@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { CheckCircle2, Compass, Sparkles, ArrowRight } from 'lucide-react';
-import { FEATURED_EXPERIENCES } from '../data/travelData';
+import { FEATURED_EXPERIENCES, EXPERIENCES_SECTION_DATA } from '../data/travelData';
 
 interface ExperienceSectionProps {
   onOpenPlanModal: () => void;
@@ -22,16 +22,16 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ onOpenPlan
         <div className="text-center max-w-3xl mx-auto mb-14 md:mb-18 space-y-4">
           <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#D9C7A2]">
             <Sparkles className="w-3.5 h-3.5" />
-            <span>Storytelling Journeys</span>
+            <span>{EXPERIENCES_SECTION_DATA.badge}</span>
           </div>
 
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-normal text-white tracking-tight leading-tight">
-            Journeys Designed <br className="hidden sm:inline" />
-            <span className="italic">Around You</span>
+            {EXPERIENCES_SECTION_DATA.titleMain} <br className="hidden sm:inline" />
+            <span className="italic">{EXPERIENCES_SECTION_DATA.titleSub}</span>
           </h2>
 
           <p className="text-base sm:text-lg text-[#B8BFBB] font-light max-w-2xl mx-auto">
-            Travel is not merely about reaching a destination—it is how the voyage reshapes your perspective.
+            {EXPERIENCES_SECTION_DATA.description}
           </p>
 
           {/* Experience Switcher Tabs */}
@@ -86,7 +86,7 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ onOpenPlan
                 
                 <div className="space-y-2">
                   <span className="text-xs uppercase tracking-widest text-[#D9C7A2] font-mono">
-                    Featured Collection
+                    {EXPERIENCES_SECTION_DATA.featuredCollectionLabel}
                   </span>
                   <h3 className="text-3xl sm:text-4xl md:text-5xl font-serif text-white font-normal tracking-tight">
                     {currentExp.title}
@@ -130,7 +130,7 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ onOpenPlan
                     onClick={onOpenPlanModal}
                     className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-[#D9C7A2] text-[#0B0F0E] text-xs sm:text-sm font-medium hover:bg-[#EFE6D2] transition-all duration-300 shadow-lg shadow-[#D9C7A2]/20 active:scale-95 cursor-pointer"
                   >
-                    <span>Customize This Experience</span>
+                    <span>{EXPERIENCES_SECTION_DATA.planButtonText}</span>
                     <ArrowRight className="w-4 h-4" />
                   </button>
                 </div>
