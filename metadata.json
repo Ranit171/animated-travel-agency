@@ -1,0 +1,6 @@
+{
+  "name": "Wanderly",
+  "description": "A premium, cinematic travel agency website exploring extraordinary destinations, curated journeys, and bespoke travel experiences.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
